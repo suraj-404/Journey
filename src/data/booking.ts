@@ -1,6 +1,6 @@
 export const bookingConfig = {
   // Paste your Google Apps Script deployment URL here after setup
-  webhookUrl: "",
+  webhookUrl: "https://xyz.com",
   durationMinutes: 30,
   timezone: "Asia/Kolkata",
   // Available Mon–Fri, 9:00 AM – 5:30 PM IST
