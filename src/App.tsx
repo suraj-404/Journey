@@ -7,6 +7,7 @@ import Friendship from "./pages/Friendship";
 import Gallery from "./pages/Gallery";
 import WhatsNext from "./pages/WhatsNext";
 import Updates from "./pages/Updates";
+import BookMeeting from "./pages/BookMeeting";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/whats-next" element={<WhatsNext />} />
           <Route path="/updates" element={<Updates />} />
+          <Route path="/book" element={<BookMeeting />} />
         </Routes>
         <Footer />
       </div>

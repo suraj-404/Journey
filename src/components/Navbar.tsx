@@ -9,6 +9,7 @@ const navItems = [
   { label: "Gallery", to: "/gallery" },
   { label: "What's Next", to: "/whats-next" },
   { label: "Updates", to: "/updates" },
+  { label: "Book a Meeting", to: "/book" },
 ];
 
 export default function Navbar() {
