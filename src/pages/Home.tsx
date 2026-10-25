@@ -28,10 +28,10 @@ export default function Home() {
               Explore Our Journey →
             </Link>
             <Link
-              to="/friendship"
+              to="/gallery"
               className="px-6 py-3 rounded-full border border-rose-200 text-stone-600 text-sm hover:border-rose-300 hover:text-rose-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
             >
-              Our Friendship
+              View Gallery
             </Link>
           </div>
         </div>
@@ -116,7 +116,29 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
 
+      {/* How We Met */}
+      <section className="py-24 px-6 max-w-6xl mx-auto border-t border-rose-100">
+        <h2 className="text-3xl font-bold text-rose-950 mb-8 tracking-tight">How We Met</h2>
+        <div className="bg-white border border-rose-100 rounded-2xl p-8 max-w-2xl">
+          <p className="text-stone-500 leading-relaxed">{friend.howWeMet}</p>
+          <p className="text-rose-400/70 text-sm mt-4">Since {friend.metYear}</p>
+        </div>
+      </section>
+
+      {/* Milestones */}
+      <section className="py-24 px-6 max-w-6xl mx-auto border-t border-rose-100">
+        <h2 className="text-3xl font-bold text-rose-950 mb-10 tracking-tight">Milestones</h2>
+        <ol className="relative border-l border-rose-200 space-y-8 pl-8">
+          {friend.milestones.map((m, i) => (
+            <li key={i} className="relative">
+              <span className="absolute -left-[calc(2rem+0.375rem)] top-1 w-3 h-3 rounded-full bg-rose-400/60 border-2 border-rose-50" />
+              <time className="text-rose-400/70 text-xs font-semibold uppercase tracking-wider">{m.year}</time>
+              <p className="text-stone-500 text-sm mt-1">{m.event}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* Quick links */}
@@ -125,10 +147,10 @@ export default function Home() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { label: "Our Journey", desc: "Years of memories from 2015 to today.", to: "/journey" },
-            { label: "Friendship", desc: "The story of a friendship that changed everything.", to: "/friendship" },
             { label: "Gallery", desc: "Photos and videos across the years.", to: "/gallery" },
             { label: "What's Next", desc: "Adventures and dreams still ahead of us.", to: "/whats-next" },
             { label: "Latest Updates", desc: "Recent news, milestones, and reflections.", to: "/updates" },
+            { label: "Book a Meeting", desc: "Schedule a call with Suraj.", to: "/book" },
           ].map((card) => (
             <Link
               key={card.to}

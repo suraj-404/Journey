@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getMemoriesByYear, getYearsWithMemories } from "../data/memories";
 import MemoryCard from "../components/MemoryCard";
 import SectionHeading from "../components/SectionHeading";
+import FloatingHearts from "../components/FloatingHearts";
 
 const START_YEAR = 2015;
 const currentYear = new Date().getFullYear();
@@ -20,6 +21,7 @@ export default function Journey() {
 
   return (
     <main className="min-h-screen pt-28 pb-24 px-6 max-w-6xl mx-auto">
+      <FloatingHearts />
       <SectionHeading
         title="Our Journey"
         subtitle="A year-by-year look at the memories, milestones, and moments that shaped us."

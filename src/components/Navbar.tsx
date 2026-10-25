@@ -5,7 +5,6 @@ import { profile } from "../data/profile";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "Journey", to: "/journey" },
-  { label: "Friendship", to: "/friendship" },
   { label: "Gallery", to: "/gallery" },
   { label: "What's Next", to: "/whats-next" },
   { label: "Updates", to: "/updates" },

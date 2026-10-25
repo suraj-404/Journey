@@ -32,3 +32,17 @@
     outline-offset: 2px;
   }
 }
+
+@keyframes float-heart {
+  0%   { transform: translateY(0) rotate(-5deg);           opacity: 0;   }
+  15%  { opacity: 1; }
+  85%  { opacity: 0.85; }
+  100% { transform: translateY(-90vh) rotate(8deg);        opacity: 0;   }
+}
+
+@keyframes fall-petal {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg);          opacity: 0;   }
+  12%  { opacity: 0.75; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(90vh) translateX(60px) rotate(400deg);  opacity: 0;   }
+}

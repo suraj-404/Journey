@@ -2,6 +2,7 @@ import { useState } from "react";
 import { memories } from "../data/memories";
 import Lightbox from "../components/Lightbox";
 import SectionHeading from "../components/SectionHeading";
+import FloatingHearts from "../components/FloatingHearts";
 
 interface GalleryItem {
   src: string;
@@ -58,6 +59,7 @@ export default function Gallery() {
 
   return (
     <main className="min-h-screen pt-28 pb-24 px-6 max-w-6xl mx-auto">
+      <FloatingHearts />
       <SectionHeading
         title="Gallery"
         subtitle="Photos and videos captured across the years."
