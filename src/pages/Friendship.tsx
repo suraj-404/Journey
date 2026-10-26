@@ -53,7 +53,7 @@ export default function Friendship() {
               👤
             </div>
           )}
-          <h3 className="text-rose-950 text-2xl font-bold mb-1">{friend.name}</h3>
+          <h3 className="text-rose-950 text-2xl mb-1" style={{ fontFamily: "'Dancing Script', cursive" }}>{friend.name}</h3>
           <p className="text-rose-400 text-sm mb-4">{friend.tagline}</p>
           <p className="text-neutral-400 text-sm leading-relaxed mb-4">{friend.bio}</p>
           <p className="text-neutral-500 text-sm">📍 {friend.location}</p>

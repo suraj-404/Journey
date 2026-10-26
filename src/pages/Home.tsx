@@ -43,82 +43,45 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero */}
       <section className="min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto pt-24">
-        <div className="max-w-2xl">
-          <p className="text-rose-400 text-sm font-medium tracking-widest uppercase mb-10">
+        <div className="max-w-3xl">
+
+          {/* Welcome */}
+          <p className="text-rose-400 text-xl md:text-2xl font-semibold tracking-[0.3em] uppercase mb-8">
             Welcome
           </p>
 
-          {/* Two avatars */}
-          <div className="flex items-center gap-4 mb-10">
-            {/* Suraj */}
-            <div className="flex flex-col items-center gap-2">
-              {profile.avatar ? (
-                <img
-                  src={profile.avatar}
-                  alt={profile.name}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-rose-200 shadow-sm"
-                />
-              ) : (
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-2xl font-bold shadow-sm">
-                  {profile.name.charAt(0)}
-                </div>
-              )}
-              <span className="text-stone-500 text-xs">{profile.name.split(" ")[0]}</span>
-            </div>
-
-            {/* connector */}
-            <span className="text-rose-300 text-3xl font-light pb-5">&</span>
-
-            {/* Friend */}
-            <div className="flex flex-col items-center gap-2">
-              {friend.avatar ? (
-                <img
-                  src={friend.avatar}
-                  alt={friend.name}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-rose-200 shadow-sm"
-                />
-              ) : (
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-2xl font-bold shadow-sm">
-                  {friend.name.charAt(0)}
-                </div>
-              )}
-              <span className="text-stone-500 text-xs">{friend.name.split(" ")[0]}</span>
-            </div>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-4 bg-gradient-to-r from-rose-500 to-rose-300 bg-clip-text text-transparent">
+          {/* Headline */}
+          <h1
+            className="text-6xl md:text-8xl leading-tight mb-6 bg-gradient-to-br from-rose-600 via-rose-400 to-rose-300 bg-clip-text text-transparent"
+            style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+          >
             Our Story
           </h1>
 
-          <p className="text-stone-400 text-sm tracking-widest uppercase mb-8">
-            Est. {friend.metYear} · Bengaluru & Mumbai
+          {/* Names */}
+          <p
+            className="text-2xl md:text-3xl text-rose-400/80 mb-6"
+            style={{ fontFamily: "'Dancing Script', cursive" }}
+          >
+            Aayushi &amp; Suraj
+          </p>
+
+          {/* One-liner */}
+          <p className="text-stone-400 text-base md:text-lg italic mb-4 leading-relaxed">
+            Some friendships are rare — the kind that feel like home no matter how far apart you are.
+          </p>
+
+          {/* Est. */}
+          <p className="text-rose-300/80 text-xs tracking-[0.25em] uppercase mb-8">
+            Est. {friend.metYear} · Mumbai &amp; Bengaluru
           </p>
 
           {yearsSince && (
-            <p className="text-rose-400/70 text-sm mb-10 flex items-center gap-2">
+            <p className="text-rose-400/70 text-sm flex items-center gap-2">
               <span>🤝</span>
-              Friends for <span className="font-semibold text-rose-400">{yearsSince}</span>
+              Together since {friend.metYear} — <span className="font-semibold text-rose-400">{yearsSince}</span>
             </p>
           )}
-
-          <div className="flex flex-wrap gap-4">
-            <Link
-              to="/journey"
-              className="px-6 py-3 rounded-full bg-rose-400 text-white font-semibold text-sm hover:bg-rose-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
-            >
-              Explore Our Journey →
-            </Link>
-            <Link
-              to="/gallery"
-              className="px-6 py-3 rounded-full border border-rose-200 text-stone-600 text-sm hover:border-rose-300 hover:text-rose-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
-            >
-              View Gallery
-            </Link>
-          </div>
-        </div>
-
-        <div aria-hidden="true" className="mt-16 text-neutral-600 text-xs tracking-widest uppercase animate-bounce self-start">
-          ↓ scroll
         </div>
       </section>
 
@@ -141,103 +104,40 @@ export default function Home() {
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-rose-950 mb-12 tracking-tight">Who Are We</h2>
 
-        {/* Me */}
-        <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              {profile.avatar ? (
-                <img
-                  src={profile.avatar}
-                  alt={profile.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-rose-200"
-                />
-              ) : (
-                <div className="w-14 h-14 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-xl font-bold">
-                  {profile.name.charAt(0)}
-                </div>
-              )}
-              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Me</p>
-            </div>
-            <p className="text-stone-500 leading-relaxed mb-6">{profile.bio}</p>
-            <p className="text-stone-400 text-sm flex items-center gap-2">
-              <span>📍</span> {profile.location}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-rose-950 mb-4 tracking-tight">Interests</h3>
-            <div className="flex flex-wrap gap-3">
-              {profile.interests.map((interest) => (
-                <span
-                  key={interest}
-                  className="px-4 py-2 rounded-full bg-rose-50 border border-rose-200 text-stone-600 text-sm hover:border-rose-400/30 hover:text-rose-400 transition-colors"
-                >
-                  {interest}
-                </span>
-              ))}
-            </div>
-            <h3 className="text-xl font-semibold text-rose-950 mt-10 mb-4 tracking-tight">What I Do</h3>
-            <div className="flex flex-wrap gap-3">
-              {profile.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-4 py-2 rounded-full bg-rose-400/10 border border-rose-400/20 text-rose-500 text-sm"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-rose-100 mb-16" />
-
-        {/* Friend */}
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Aayushi first */}
           <div>
             <div className="flex items-center gap-4 mb-4">
               {friend.avatar ? (
-                <img
-                  src={friend.avatar}
-                  alt={friend.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-rose-200"
-                />
+                <img src={friend.avatar} alt={friend.name} className="w-14 h-14 rounded-full object-cover border-2 border-rose-200" />
               ) : (
                 <div className="w-14 h-14 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-xl font-bold">
                   {friend.name.charAt(0)}
                 </div>
               )}
-              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Them</p>
+              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Aayushi</p>
             </div>
-            <p className="text-stone-500 leading-relaxed mb-6">{friend.bio}</p>
-            <p className="text-stone-400 text-sm flex items-center gap-2">
-              <span>📍</span> {friend.location}
-            </p>
+            <p className="text-stone-500 leading-relaxed mb-4">{friend.bio}</p>
+            <p className="text-stone-400 text-sm flex items-center gap-2"><span>📍</span> {friend.location}</p>
           </div>
+
+          {/* Suraj second */}
           <div>
-            <h3 className="text-xl font-semibold text-rose-950 mb-4 tracking-tight">Interests</h3>
-            <div className="flex flex-wrap gap-3">
-              {friend.interests.map((interest) => (
-                <span
-                  key={interest}
-                  className="px-4 py-2 rounded-full bg-rose-50 border border-rose-200 text-stone-600 text-sm hover:border-rose-400/30 hover:text-rose-400 transition-colors"
-                >
-                  {interest}
-                </span>
-              ))}
+            <div className="flex items-center gap-4 mb-4">
+              {profile.avatar ? (
+                <img src={profile.avatar} alt={profile.name} className="w-14 h-14 rounded-full object-cover border-2 border-rose-200" />
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-xl font-bold">
+                  {profile.name.charAt(0)}
+                </div>
+              )}
+              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Suraj</p>
             </div>
-            <h3 className="text-xl font-semibold text-rose-950 mt-10 mb-4 tracking-tight">What They Do</h3>
-            <div className="flex flex-wrap gap-3">
-              {friend.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-4 py-2 rounded-full bg-rose-400/10 border border-rose-400/20 text-rose-500 text-sm"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+            <p className="text-stone-500 leading-relaxed mb-4">{profile.bio}</p>
+            <p className="text-stone-400 text-sm flex items-center gap-2"><span>📍</span> {profile.location}</p>
           </div>
         </div>
+
       </section>
 
       {/* How We Met */}
@@ -246,6 +146,21 @@ export default function Home() {
         <div className="bg-white border border-rose-100 rounded-2xl p-8 max-w-2xl">
           <p className="text-stone-500 leading-relaxed">{friend.howWeMet}</p>
           <p className="text-rose-400/70 text-sm mt-4">Since {friend.metYear}</p>
+        </div>
+
+        <div className="flex flex-wrap gap-4 mt-10">
+          <Link
+            to="/journey"
+            className="px-6 py-3 rounded-full bg-rose-400 text-white font-semibold text-sm hover:bg-rose-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
+          >
+            Explore Our Journey →
+          </Link>
+          <Link
+            to="/gallery"
+            className="px-6 py-3 rounded-full border border-rose-200 text-stone-600 text-sm hover:border-rose-300 hover:text-rose-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
+          >
+            View Gallery
+          </Link>
         </div>
       </section>
 

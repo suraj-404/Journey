@@ -13,7 +13,7 @@ export interface Friend {
 }
 
 export const friend: Friend = {
-  name: "Friend's Name",
+  name: "Aayushi",
   avatar: "https://i.pravatar.cc/150?img=47",
   tagline: "The one who makes every adventure better",
   bio: "A short paragraph about your friend — their personality, what makes them special, and why this friendship matters so much to you.",
@@ -45,7 +45,7 @@ export const friend: Friend = {
       text: "A short heartfelt message to your friend. Replace with your own words.",
     },
     {
-      from: "Friend's Name",
+      from: "Aayushi",
       text: "A message from your friend, if they'd like to add one.",
     },
   ],

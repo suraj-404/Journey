@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { profile } from "../data/profile";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -33,9 +32,10 @@ export default function Navbar() {
       >
         <NavLink
           to="/"
-          className="text-rose-950 font-semibold text-lg tracking-tight hover:text-rose-400 transition-colors"
+          className="text-2xl bg-gradient-to-r from-rose-500 to-rose-300 bg-clip-text text-transparent hover:from-rose-400 hover:to-rose-200 transition-all duration-300"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
         >
-          {profile.name.split(" ")[0]}
+          Sushi ♥
         </NavLink>
 
         {/* Desktop nav */}
