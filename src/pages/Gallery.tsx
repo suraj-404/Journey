@@ -2,8 +2,6 @@ import { useState } from "react";
 import { memories } from "../data/memories";
 import Lightbox from "../components/Lightbox";
 import SectionHeading from "../components/SectionHeading";
-import FloatingHearts from "../components/FloatingHearts";
-
 interface GalleryItem {
   src: string;
   alt: string;
@@ -50,16 +48,16 @@ function buildYearRange(): number[] {
 
 export default function Gallery() {
   const [yearFilter, setYearFilter] = useState<number | "all">("all");
-  const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filtered =
     yearFilter === "all" ? allItems : allItems.filter((i) => i.year === yearFilter);
+  const imageItems = filtered.filter((i) => i.type === "image");
 
   const allYears = buildYearRange();
 
   return (
     <main className="min-h-screen pt-28 pb-24 px-6 max-w-6xl mx-auto">
-      <FloatingHearts />
       <SectionHeading
         title="Gallery"
         subtitle="Photos and videos captured across the years."
@@ -99,12 +97,20 @@ export default function Gallery() {
             <div
               key={i}
               className="break-inside-avoid rounded-xl overflow-hidden bg-white border border-t-2 border-rose-100 border-t-rose-400/20 cursor-pointer hover:border-rose-400/20 hover:border-t-rose-400/40 transition-all duration-300 group"
-              onClick={() => item.type === "image" && setLightbox(item)}
+              onClick={() => {
+                if (item.type === "image") {
+                  const idx = imageItems.findIndex((im) => im === item);
+                  setLightboxIndex(idx);
+                }
+              }}
               role={item.type === "image" ? "button" : undefined}
               tabIndex={item.type === "image" ? 0 : undefined}
               aria-label={item.type === "image" ? `Open ${item.caption}` : undefined}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && item.type === "image") setLightbox(item);
+                if (e.key === "Enter" && item.type === "image") {
+                  const idx = imageItems.findIndex((im) => im === item);
+                  setLightboxIndex(idx);
+                }
               }}
             >
               {item.type === "image" ? (
@@ -139,11 +145,12 @@ export default function Gallery() {
         </div>
       )}
 
-      {lightbox && (
+      {lightboxIndex !== null && imageItems.length > 0 && (
         <Lightbox
-          src={lightbox.src}
-          alt={lightbox.alt}
-          onClose={() => setLightbox(null)}
+          items={imageItems.map((i) => ({ src: i.src, alt: i.alt }))}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onChange={setLightboxIndex}
         />
       )}
     </main>

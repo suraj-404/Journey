@@ -9,13 +9,15 @@ export interface Friend {
   skills: string[];
   milestones: { year: number; event: string }[];
   messages: { from: string; text: string }[];
+  avatar?: string;
 }
 
 export const friend: Friend = {
   name: "Friend's Name",
+  avatar: "https://i.pravatar.cc/150?img=47",
   tagline: "The one who makes every adventure better",
   bio: "A short paragraph about your friend — their personality, what makes them special, and why this friendship matters so much to you.",
-  location: "Their City, Country",
+  location: "Mumbai, India",
   howWeMet: "Describe how you two first crossed paths — the place, the moment, and what made it stick.",
   metYear: 2015,
   interests: [

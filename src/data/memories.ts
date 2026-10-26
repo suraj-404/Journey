@@ -19,9 +19,12 @@ export const memories: Memory[] = [
     title: "The Beginning",
     description:
       "Placeholder description for a 2015 memory. Replace with your own story.",
-    location: "Your City",
+    location: "Bengaluru",
     tags: ["friendship", "beginnings"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2015a/800/500",
+      "https://picsum.photos/seed/2015b/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -35,7 +38,24 @@ export const memories: Memory[] = [
       "Placeholder description for a 2016 memory. Replace with your own story.",
     location: "Somewhere Special",
     tags: ["adventure", "travel"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2016a/800/500",
+      "https://picsum.photos/seed/2016b/800/600",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2016-02",
+    year: 2016,
+    date: "2016-11-20",
+    title: "Road Trip",
+    description:
+      "A spontaneous road trip that turned into one of the best memories.",
+    location: "Highway 1",
+    tags: ["road-trip", "adventure"],
+    images: [
+      "https://picsum.photos/seed/2016c/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -48,7 +68,10 @@ export const memories: Memory[] = [
     description:
       "Placeholder description for a 2017 memory. Replace with your own story.",
     tags: ["milestone"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2017a/800/500",
+      "https://picsum.photos/seed/2017b/800/700",
+    ],
     videoUrls: [],
   },
 
@@ -60,8 +83,26 @@ export const memories: Memory[] = [
     title: "Celebrations",
     description:
       "Placeholder description for a 2018 memory. Replace with your own story.",
+    location: "Mumbai",
     tags: ["celebration"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2018a/800/500",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2018-02",
+    year: 2018,
+    date: "2018-07-14",
+    title: "Monsoon Memories",
+    description:
+      "Getting drenched in the rain and not caring one bit.",
+    location: "Mumbai",
+    tags: ["monsoon", "fun"],
+    images: [
+      "https://picsum.photos/seed/2018b/800/600",
+      "https://picsum.photos/seed/2018c/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -73,8 +114,26 @@ export const memories: Memory[] = [
     title: "Summer Memories",
     description:
       "Placeholder description for a 2019 memory. Replace with your own story.",
-    tags: ["summer"],
-    images: [],
+    location: "Goa",
+    tags: ["summer", "beach"],
+    images: [
+      "https://picsum.photos/seed/2019a/800/500",
+      "https://picsum.photos/seed/2019b/800/600",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2019-02",
+    year: 2019,
+    date: "2019-10-02",
+    title: "Trek to the Top",
+    description:
+      "That one trek where we almost gave up but made it to the summit anyway.",
+    location: "Western Ghats",
+    tags: ["trekking", "adventure"],
+    images: [
+      "https://picsum.photos/seed/2019c/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -85,9 +144,11 @@ export const memories: Memory[] = [
     date: "2020-05-01",
     title: "Staying Connected",
     description:
-      "Placeholder description for a 2020 memory — a year when staying connected mattered more than ever.",
-    tags: ["connection"],
-    images: [],
+      "A year when staying connected mattered more than ever. Late night calls and shared playlists kept us close.",
+    tags: ["connection", "pandemic"],
+    images: [
+      "https://picsum.photos/seed/2020a/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -99,8 +160,12 @@ export const memories: Memory[] = [
     title: "New Beginnings",
     description:
       "Placeholder description for a 2021 memory. Replace with your own story.",
+    location: "Bengaluru",
     tags: ["new-beginnings"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2021a/800/500",
+      "https://picsum.photos/seed/2021b/800/600",
+    ],
     videoUrls: [],
   },
 
@@ -112,8 +177,26 @@ export const memories: Memory[] = [
     title: "Making Memories",
     description:
       "Placeholder description for a 2022 memory. Replace with your own story.",
-    tags: ["memories"],
-    images: [],
+    location: "Coorg",
+    tags: ["memories", "nature"],
+    images: [
+      "https://picsum.photos/seed/2022a/800/500",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2022-02",
+    year: 2022,
+    date: "2022-08-10",
+    title: "Late Night Café",
+    description:
+      "Some of the best conversations happen over bad coffee at 2 AM.",
+    location: "Bengaluru",
+    tags: ["food", "conversations"],
+    images: [
+      "https://picsum.photos/seed/2022b/800/500",
+      "https://picsum.photos/seed/2022c/800/700",
+    ],
     videoUrls: [],
   },
 
@@ -125,8 +208,26 @@ export const memories: Memory[] = [
     title: "Reunion",
     description:
       "Placeholder description for a 2023 memory. Replace with your own story.",
+    location: "Mumbai",
     tags: ["reunion"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2023a/800/500",
+      "https://picsum.photos/seed/2023b/800/600",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2023-02",
+    year: 2023,
+    date: "2023-04-05",
+    title: "Festival Season",
+    description:
+      "Colors, lights, and the kind of energy you only get during festival season.",
+    location: "Bengaluru",
+    tags: ["festival", "celebration"],
+    images: [
+      "https://picsum.photos/seed/2023c/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -138,8 +239,26 @@ export const memories: Memory[] = [
     title: "Another Chapter",
     description:
       "Placeholder description for a 2024 memory. Replace with your own story.",
-    tags: ["chapter"],
-    images: [],
+    location: "Pondicherry",
+    tags: ["chapter", "travel"],
+    images: [
+      "https://picsum.photos/seed/2024a/800/500",
+      "https://picsum.photos/seed/2024b/800/600",
+    ],
+    videoUrls: [],
+  },
+  {
+    id: "2024-02",
+    year: 2024,
+    date: "2024-09-20",
+    title: "Weekend Getaway",
+    description:
+      "Spontaneous plans always make the best memories.",
+    location: "Hampi",
+    tags: ["travel", "adventure"],
+    images: [
+      "https://picsum.photos/seed/2024c/800/500",
+    ],
     videoUrls: [],
   },
 
@@ -151,8 +270,12 @@ export const memories: Memory[] = [
     title: "Still Going Strong",
     description:
       "Placeholder description for a 2025 memory. Replace with your own story.",
+    location: "Bengaluru",
     tags: ["friendship"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2025a/800/500",
+      "https://picsum.photos/seed/2025b/800/600",
+    ],
     videoUrls: [],
   },
 
@@ -164,8 +287,11 @@ export const memories: Memory[] = [
     title: "The Story Continues",
     description:
       "Placeholder description for a 2026 memory. Replace with your own story.",
+    location: "Mumbai",
     tags: ["friendship"],
-    images: [],
+    images: [
+      "https://picsum.photos/seed/2026a/800/500",
+    ],
     videoUrls: [],
   },
 ];

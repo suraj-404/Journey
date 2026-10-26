@@ -1,25 +1,106 @@
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { profile } from "../data/profile";
 import { friend } from "../data/friend";
+import { memories } from "../data/memories";
+
+function useYearsSince(year: number) {
+  const [display, setDisplay] = useState("");
+  useEffect(() => {
+    function calc() {
+      const now = new Date();
+      const start = new Date(year, 0, 1);
+      const msPerYear = 1000 * 60 * 60 * 24 * 365.25;
+      const totalYears = (now.getTime() - start.getTime()) / msPerYear;
+      const years = Math.floor(totalYears);
+      const days = Math.floor((totalYears - years) * 365.25);
+      setDisplay(`${years} years, ${days} days`);
+    }
+    calc();
+    const id = setInterval(calc, 60000);
+    return () => clearInterval(id);
+  }, [year]);
+  return display;
+}
+
+function useOnThisDay() {
+  return useMemo(() => {
+    const today = new Date();
+    const mm = today.getMonth() + 1;
+    const dd = today.getDate();
+    return memories.find((m) => {
+      const d = new Date(m.date);
+      return d.getMonth() + 1 === mm && d.getDate() === dd && d.getFullYear() < today.getFullYear();
+    }) ?? null;
+  }, []);
+}
 
 export default function Home() {
+  const yearsSince = useYearsSince(friend.metYear);
+  const onThisDay = useOnThisDay();
+
   return (
     <main className="min-h-screen">
       {/* Hero */}
       <section className="min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto pt-24">
-        <div className="max-w-3xl">
-          <p className="text-rose-400 text-sm font-medium tracking-widest uppercase mb-6">
+        <div className="max-w-2xl">
+          <p className="text-rose-400 text-sm font-medium tracking-widest uppercase mb-10">
             Welcome
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6 bg-gradient-to-r from-rose-500 to-rose-300 bg-clip-text text-transparent">
-            {profile.name}
+
+          {/* Two avatars */}
+          <div className="flex items-center gap-4 mb-10">
+            {/* Suraj */}
+            <div className="flex flex-col items-center gap-2">
+              {profile.avatar ? (
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-rose-200 shadow-sm"
+                />
+              ) : (
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-2xl font-bold shadow-sm">
+                  {profile.name.charAt(0)}
+                </div>
+              )}
+              <span className="text-stone-500 text-xs">{profile.name.split(" ")[0]}</span>
+            </div>
+
+            {/* connector */}
+            <span className="text-rose-300 text-3xl font-light pb-5">&</span>
+
+            {/* Friend */}
+            <div className="flex flex-col items-center gap-2">
+              {friend.avatar ? (
+                <img
+                  src={friend.avatar}
+                  alt={friend.name}
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-rose-200 shadow-sm"
+                />
+              ) : (
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-2xl font-bold shadow-sm">
+                  {friend.name.charAt(0)}
+                </div>
+              )}
+              <span className="text-stone-500 text-xs">{friend.name.split(" ")[0]}</span>
+            </div>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-4 bg-gradient-to-r from-rose-500 to-rose-300 bg-clip-text text-transparent">
+            Our Story
           </h1>
-          <p className="text-xl md:text-2xl text-stone-400 mb-8 leading-relaxed">
-            {profile.tagline}
+
+          <p className="text-stone-400 text-sm tracking-widest uppercase mb-8">
+            Est. {friend.metYear} · Bengaluru & Mumbai
           </p>
-          <p className="text-stone-400 text-lg max-w-xl leading-relaxed mb-12">
-            {profile.bio}
-          </p>
+
+          {yearsSince && (
+            <p className="text-rose-400/70 text-sm mb-10 flex items-center gap-2">
+              <span>🤝</span>
+              Friends for <span className="font-semibold text-rose-400">{yearsSince}</span>
+            </p>
+          )}
+
           <div className="flex flex-wrap gap-4">
             <Link
               to="/journey"
@@ -41,6 +122,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* On This Day */}
+      {onThisDay && (
+        <section className="py-10 px-6 max-w-6xl mx-auto">
+          <div className="bg-rose-400/10 border border-rose-400/20 rounded-2xl px-6 py-4 flex gap-4 items-start">
+            <span className="text-2xl mt-0.5">📅</span>
+            <div>
+              <p className="text-rose-500 text-xs font-semibold uppercase tracking-widest mb-1">On this day in {new Date(onThisDay.date).getFullYear()}</p>
+              <p className="text-rose-950 font-semibold">{onThisDay.title}</p>
+              <p className="text-stone-500 text-sm leading-relaxed mt-1">{onThisDay.description}</p>
+              <Link to="/journey" className="text-rose-400 text-xs hover:underline mt-2 inline-block">See memory →</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* About */}
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-rose-950 mb-12 tracking-tight">Who Are We</h2>
@@ -48,7 +144,20 @@ export default function Home() {
         {/* Me */}
         <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
           <div>
-            <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest mb-4">About Me</p>
+            <div className="flex items-center gap-4 mb-4">
+              {profile.avatar ? (
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  className="w-14 h-14 rounded-full object-cover border-2 border-rose-200"
+                />
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-xl font-bold">
+                  {profile.name.charAt(0)}
+                </div>
+              )}
+              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Me</p>
+            </div>
             <p className="text-stone-500 leading-relaxed mb-6">{profile.bio}</p>
             <p className="text-stone-400 text-sm flex items-center gap-2">
               <span>📍</span> {profile.location}
@@ -85,7 +194,20 @@ export default function Home() {
         {/* Friend */}
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div>
-            <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest mb-4">About Them</p>
+            <div className="flex items-center gap-4 mb-4">
+              {friend.avatar ? (
+                <img
+                  src={friend.avatar}
+                  alt={friend.name}
+                  className="w-14 h-14 rounded-full object-cover border-2 border-rose-200"
+                />
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-400 text-xl font-bold">
+                  {friend.name.charAt(0)}
+                </div>
+              )}
+              <p className="text-rose-400 text-xs font-semibold uppercase tracking-widest">About Them</p>
+            </div>
             <p className="text-stone-500 leading-relaxed mb-6">{friend.bio}</p>
             <p className="text-stone-400 text-sm flex items-center gap-2">
               <span>📍</span> {friend.location}

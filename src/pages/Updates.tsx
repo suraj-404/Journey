@@ -1,6 +1,7 @@
 import { updates } from "../data/updates";
 import SectionHeading from "../components/SectionHeading";
 import Tag from "../components/Tag";
+import FadeIn from "../components/FadeIn";
 
 export default function Updates() {
   const sorted = [...updates].sort(
@@ -15,7 +16,7 @@ export default function Updates() {
       />
 
       <div className="max-w-2xl space-y-10">
-        {sorted.map((update) => {
+        {sorted.map((update, i) => {
           const formatted = new Date(update.date).toLocaleDateString("en-US", {
             weekday: "long",
             year: "numeric",
@@ -24,8 +25,8 @@ export default function Updates() {
           });
 
           return (
+            <FadeIn key={update.id} delay={i * 80}>
             <article
-              key={update.id}
               className="border-l-2 border-rose-200 pl-6 hover:border-rose-400/40 transition-colors duration-300"
             >
               <time dateTime={update.date} className="text-rose-400/70 text-xs font-medium uppercase tracking-wide">
@@ -41,6 +42,7 @@ export default function Updates() {
                 </div>
               )}
             </article>
+            </FadeIn>
           );
         })}
       </div>

@@ -1,5 +1,6 @@
 import { bucketList } from "../data/plans";
 import SectionHeading from "../components/SectionHeading";
+import FadeIn from "../components/FadeIn";
 
 const categories = ["all", "travel", "experience", "personal", "together"] as const;
 type Category = (typeof categories)[number];
@@ -66,9 +67,9 @@ export default function WhatsNext() {
 
       {/* Bucket list */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {filtered.map((item) => (
+        {filtered.map((item, i) => (
+          <FadeIn key={item.id} delay={i * 60}>
           <article
-            key={item.id}
             className={`relative p-6 rounded-2xl border transition-all duration-300 ${
               item.done
                 ? "bg-rose-50 border-rose-100 opacity-60"
@@ -105,6 +106,7 @@ export default function WhatsNext() {
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed">{item.description}</p>
           </article>
+          </FadeIn>
         ))}
       </div>
     </main>

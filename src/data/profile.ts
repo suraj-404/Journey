@@ -6,10 +6,12 @@ export interface Profile {
   interests: string[];
   skills: string[];
   socials: { label: string; url: string }[];
+  avatar?: string;
 }
 
 export const profile: Profile = {
   name: "Suraj Sahu",
+  avatar: "https://i.pravatar.cc/150?img=11",
   tagline: "Software Engineer · Explorer · Friend",
   bio: "A software engineer based in Bengaluru who finds joy in the little things — a good trek, an interesting café, trying food from a new place, or catching a game. Life is best lived with curiosity and good company.",
   location: "Bengaluru, India",

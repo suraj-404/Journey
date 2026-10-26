@@ -8,12 +8,14 @@ import WhatsNext from "./pages/WhatsNext";
 import Updates from "./pages/Updates";
 import BookMeeting from "./pages/BookMeeting";
 import FallingPetals from "./components/FallingPetals";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-rose-50 text-rose-950">
         <FallingPetals />
+        <MusicPlayer />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
